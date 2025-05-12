@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8fb;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"],
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0 20px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        p, h2, h3 {
+            color: #34495e;
+            text-align: center;
+        }
+        hr {
+            margin: 40px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resume RAG Chatbot</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <h2>Upload Resume (PDF)</h2>
+        <input type="file" name="pdf" accept=".pdf" required>
+        <button type="submit">Upload and Process</button>
+    </form>
+
+    {% if uploaded_resume %}
+        <h2>Uploaded Resume:</h2>
+        <p>Resume Name: {{ uploaded_resume }}</p>
+    {% else %}
+        <p>No resume uploaded yet.</p>
+    {% endif %}
+
+    <br><hr><br>
+
+    <form method="POST">
+        <h2>Ask a Question</h2>
+        <input type="text" name="question" placeholder="Enter your question..." required>
+        <button type="submit">Ask</button>
+    </form>
+
+    {% if response %}
+        <h3>Response:</h3>
+        <p>{{ response }}</p>
+    {% endif %}
+</body>
+</html>
