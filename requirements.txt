@@ -1,8 +1,14 @@
-langchain
-flask
-python-dotenv
-PyPDF2
-fitz
-faiss-cpu
-langchain_google_genai
-google-generativeai
+# Resume RAG System
+flask>=3.0
+python-dotenv>=1.0
+pymupdf>=1.24                 # PDF text extraction (imports as `fitz`)
+numpy>=1.26
+rank-bm25>=0.2               # backs LangChain's BM25Retriever
+
+# LLM + retrieval stack
+google-generativeai>=0.8     # Gemini generation (rerank, answer, judge)
+langchain>=1.0               # EnsembleRetriever lives in langchain_classic (pulled in by langchain v1)
+langchain-community>=0.3     # BM25Retriever
+langchain-chroma>=0.2        # persistent Chroma vector store
+langchain-google-genai>=2.0  # Gemini embeddings
+chromadb>=1.0                # vector database backend

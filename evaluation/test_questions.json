@@ -1,0 +1,167 @@
+{
+  "resume_file": "data/sample_resume.txt",
+  "description": "Evaluation set for the sample resume (Priya Narayan). Each item lists the resume section(s) that genuinely contain the answer (used for retrieval precision@k) plus reference facts (used for LLM-based faithfulness scoring). 'expected_refusal' marks questions the resume cannot answer.",
+  "questions": [
+    {
+      "id": "q01",
+      "question": "How many years of experience does the candidate have?",
+      "relevant_sections": ["Summary"],
+      "reference": "8 years of experience.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q02",
+      "question": "Which vector databases has the candidate worked with?",
+      "relevant_sections": ["Skills"],
+      "reference": "Pinecone, Chroma, FAISS, and Weaviate.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q03",
+      "question": "What is the candidate's current job title and employer?",
+      "relevant_sections": ["Experience"],
+      "reference": "Senior Machine Learning Engineer at Flipkart.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q04",
+      "question": "How much did the candidate reduce model serving latency at Flipkart?",
+      "relevant_sections": ["Experience"],
+      "reference": "From 240ms to 95ms, using ONNX runtime and request batching.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q05",
+      "question": "What programming languages does the candidate know?",
+      "relevant_sections": ["Skills"],
+      "reference": "Python, Go, SQL, Java, and Bash.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q06",
+      "question": "Tell me about the candidate's work at Swiggy.",
+      "relevant_sections": ["Experience"],
+      "reference": "Machine Learning Engineer at Swiggy (2018-2021): recommendation model raising conversion 11%, Airflow feature pipeline over 2TB/day, migrated batch inference to Kubernetes cutting cost 27%.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q07",
+      "question": "What degrees has the candidate earned and from where?",
+      "relevant_sections": ["Education"],
+      "reference": "M.Tech in Computer Science from IIT Bombay (2014-2016) and B.Tech in IT from NIT Trichy (2010-2014).",
+      "expected_refusal": false
+    },
+    {
+      "id": "q08",
+      "question": "What certifications does the candidate hold?",
+      "relevant_sections": ["Certifications"],
+      "reference": "AWS Certified Machine Learning - Specialty (2022) and Google Cloud Professional Machine Learning Engineer (2021).",
+      "expected_refusal": false
+    },
+    {
+      "id": "q09",
+      "question": "Describe the Resume RAG System project.",
+      "relevant_sections": ["Projects"],
+      "reference": "Open-source resume QA system using Chroma, hybrid retrieval, and a cross-encoder reranker; 0.91 retrieval precision@5.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q10",
+      "question": "How large a team has the candidate led?",
+      "relevant_sections": ["Experience", "Summary"],
+      "reference": "Led a team of up to 6 engineers and mentored 3 junior ML engineers.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q11",
+      "question": "What MLOps tools is the candidate familiar with?",
+      "relevant_sections": ["Skills"],
+      "reference": "Docker, Kubernetes, MLflow, Airflow, AWS SageMaker, and GCP Vertex AI.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q12",
+      "question": "What did the candidate achieve in fraud detection?",
+      "relevant_sections": ["Projects"],
+      "reference": "RealTime Fraud Detection (2022): Kafka + Flink at 50k transactions/second with sub-100ms latency.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q13",
+      "question": "By how much did the retrieval-augmented search assistant reduce support escalations?",
+      "relevant_sections": ["Experience"],
+      "reference": "Reduced customer support escalations by 32%.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q14",
+      "question": "What languages does the candidate speak?",
+      "relevant_sections": ["Languages"],
+      "reference": "English (fluent), Hindi (native), Kannada (conversational).",
+      "expected_refusal": false
+    },
+    {
+      "id": "q15",
+      "question": "What improvement did the hybrid retrieval pipeline deliver over the FAISS baseline?",
+      "relevant_sections": ["Experience"],
+      "reference": "Improved search relevance (nDCG@10) by 18% over the previous FAISS baseline.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q16",
+      "question": "Where is the candidate based?",
+      "relevant_sections": ["Header", "Contact"],
+      "reference": "Bengaluru, India.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q17",
+      "question": "What deep learning frameworks does the candidate use?",
+      "relevant_sections": ["Skills"],
+      "reference": "PyTorch, TensorFlow, scikit-learn, and Hugging Face Transformers.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q18",
+      "question": "What was the candidate's role and main result at Mu Sigma?",
+      "relevant_sections": ["Experience"],
+      "reference": "Data Scientist (2016-2018): churn prediction models with 0.84 AUC and automated dashboards saving 15 hours/week.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q19",
+      "question": "How many monthly active users did the candidate's systems serve?",
+      "relevant_sections": ["Summary", "Experience"],
+      "reference": "40M+ monthly active users.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q20",
+      "question": "What streaming/data technologies does the candidate know?",
+      "relevant_sections": ["Skills"],
+      "reference": "Spark, Kafka, Snowflake, PostgreSQL, and Redis.",
+      "expected_refusal": false
+    },
+    {
+      "id": "q21",
+      "question": "What is the candidate's expected salary?",
+      "relevant_sections": [],
+      "reference": "Not stated in the resume.",
+      "expected_refusal": true
+    },
+    {
+      "id": "q22",
+      "question": "Does the candidate speak French?",
+      "relevant_sections": [],
+      "reference": "Not stated; the resume lists English, Hindi, and Kannada only.",
+      "expected_refusal": true
+    },
+    {
+      "id": "q23",
+      "question": "What is the candidate's current notice period?",
+      "relevant_sections": [],
+      "reference": "Not stated in the resume.",
+      "expected_refusal": true
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+PRIYA NARAYAN
+Senior Machine Learning Engineer
+Bengaluru, India | priya.narayan@example.com | +91 98765 43210
+LinkedIn: linkedin.com/in/priyanarayan | GitHub: github.com/priyanarayan
+
+SUMMARY
+Senior Machine Learning Engineer with 8 years of experience building and deploying
+production NLP and recommendation systems at scale. Specialized in retrieval-augmented
+generation, vector search, and MLOps. Led teams of up to 6 engineers and shipped models
+serving 40M+ monthly active users.
+
+SKILLS
+Programming: Python, Go, SQL, Java, Bash
+Machine Learning: PyTorch, TensorFlow, scikit-learn, Hugging Face Transformers
+NLP & LLMs: RAG, semantic search, fine-tuning, prompt engineering, embeddings
+Vector Databases: Pinecone, Chroma, FAISS, Weaviate
+MLOps: Docker, Kubernetes, MLflow, Airflow, AWS SageMaker, GCP Vertex AI
+Data: Spark, Kafka, Snowflake, PostgreSQL, Redis
+
+EXPERIENCE
+
+Senior Machine Learning Engineer | Flipkart | Bengaluru | March 2021 - Present
+- Designed and shipped a retrieval-augmented search assistant that reduced customer
+  support escalations by 32% across 40M monthly active users.
+- Built a hybrid retrieval pipeline (BM25 + dense vectors) backed by Pinecone, improving
+  search relevance (nDCG@10) by 18% over the previous FAISS baseline.
+- Led a team of 6 engineers and mentored 3 junior ML engineers.
+- Reduced model serving latency from 240ms to 95ms by introducing ONNX runtime and
+  request batching.
+
+Machine Learning Engineer | Swiggy | Bengaluru | June 2018 - February 2021
+- Developed a restaurant recommendation model that increased order conversion by 11%.
+- Implemented an Airflow-based feature pipeline processing 2TB of event data daily.
+- Migrated batch inference jobs to Kubernetes, cutting infrastructure cost by 27%.
+
+Data Scientist | Mu Sigma | Bengaluru | July 2016 - May 2018
+- Built churn prediction models for retail clients with 0.84 AUC.
+- Automated reporting dashboards that saved the analytics team 15 hours per week.
+
+PROJECTS
+
+Resume RAG System (2024)
+- Open-source resume question-answering system using Chroma, hybrid retrieval, and a
+  cross-encoder reranking layer. Achieved 0.91 retrieval precision@5 on a benchmark set.
+
+RealTime Fraud Detection (2022)
+- Streaming fraud detection on Kafka and Flink processing 50k transactions per second
+  with sub-100ms decision latency.
+
+EDUCATION
+M.Tech in Computer Science | Indian Institute of Technology, Bombay | 2014 - 2016
+B.Tech in Information Technology | NIT Trichy | 2010 - 2014
+
+CERTIFICATIONS
+- AWS Certified Machine Learning - Specialty (2022)
+- Google Cloud Professional Machine Learning Engineer (2021)
+
+LANGUAGES
+English (fluent), Hindi (native), Kannada (conversational)

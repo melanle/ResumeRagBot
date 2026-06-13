@@ -1,86 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Resume Chatbot</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Rag System</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f8fb;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-        }
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        input[type="file"],
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin: 10px 0 20px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-        p, h2, h3 {
-            color: #34495e;
-            text-align: center;
-        }
-        hr {
-            margin: 40px 0;
-            border: none;
-            border-top: 1px solid #ccc;
-        }
+      :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --accent: #38bdf8;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: system-ui, "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 24px;
+      }
+      h1 {
+        text-align: center;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+      .subtitle {
+        text-align: center;
+        color: var(--muted);
+        margin-top: 0;
+        font-size: 14px;
+      }
+      .card {
+        background: var(--card);
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 760px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      }
+      label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+      }
+      input[type="file"],
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0 16px;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        background: #0f172a;
+        color: var(--text);
+      }
+      button {
+        background: var(--accent);
+        color: #06283d;
+        font-weight: 700;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #7dd3fc;
+      }
+      .pill {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        background: #334155;
+        color: var(--muted);
+      }
+      .answer {
+        line-height: 1.6;
+        white-space: pre-wrap;
+      }
+      .conf-bar {
+        height: 10px;
+        border-radius: 999px;
+        background: #334155;
+        overflow: hidden;
+        margin: 6px 0 2px;
+      }
+      .conf-fill {
+        height: 100%;
+      }
+      .source {
+        border-left: 3px solid var(--accent);
+        padding: 8px 12px;
+        margin: 10px 0;
+        background: #0f172a;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .source .meta {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+      .cited {
+        color: #4ade80;
+        font-weight: 600;
+      }
+      .error {
+        color: #f87171;
+        text-align: center;
+      }
+      code {
+        color: #fbbf24;
+      }
     </style>
-</head>
-<body>
-    <h1>Resume RAG Chatbot</h1>
+  </head>
+  <body>
+    <h1>Resume RAG System</h1>
 
-    <form method="POST" enctype="multipart/form-data">
-        <h2>Upload Resume (PDF)</h2>
-        <input type="file" name="pdf" accept=".pdf" required>
-        <button type="submit">Upload and Process</button>
-    </form>
+    <div class="card">
+      <form method="POST" enctype="multipart/form-data">
+        <label>Upload Resume (PDF)</label>
+        <input type="file" name="pdf" accept=".pdf,.txt" />
+        <button type="submit">Upload &amp; Index</button>
+      </form>
+      <p>
+        {% if uploaded_resume %}
+        <span class="pill">Active resume: {{ uploaded_resume }}</span>
+        {% if indexed %}<span class="pill">index ready</span>{% endif %} {% else
+        %}
+        <span class="pill">No resume indexed yet</span>
+        {% endif %}
+      </p>
+    </div>
 
-    {% if uploaded_resume %}
-        <h2>Uploaded Resume:</h2>
-        <p>Resume Name: {{ uploaded_resume }}</p>
-    {% else %}
-        <p>No resume uploaded yet.</p>
-    {% endif %}
-
-    <br><hr><br>
-
-    <form method="POST">
-        <h2>Ask a Question</h2>
-        <input type="text" name="question" placeholder="Enter your question..." required>
+    <div class="card">
+      <form method="POST">
+        <label>Ask about the candidate</label>
+        <input
+          type="text"
+          name="question"
+          placeholder="e.g. What vector databases has the candidate used?"
+          required
+        />
         <button type="submit">Ask</button>
-    </form>
+      </form>
+    </div>
 
-    {% if response %}
-        <h3>Response:</h3>
-        <p>{{ response }}</p>
+    {% if error %}
+    <div class="card error">{{ error }}</div>
+    {% endif %} {% if result %}
+    <div class="card">
+      <h3>Answer</h3>
+      <div class="answer">{{ result.answer }}</div>
+
+      {% set conf_pct = (result.confidence * 100) | round(0, 'common') | int %}
+      {% set conf_color = '#4ade80' if result.confidence >= 0.66 else ('#fbbf24'
+      if result.confidence >= 0.33 else '#f87171') %}
+      <p style="margin-top: 18px">
+        <strong>Confidence:</strong> {{ conf_pct }}%
+      </p>
+      <div class="conf-bar">
+        <div
+          class="conf-fill"
+          style="width: {{ conf_pct }}%; background: {{ conf_color }};"
+        ></div>
+      </div>
+
+      <h3 style="margin-top: 20px">Sources used</h3>
+      {% for s in result.sources %}
+      <div class="source">
+        <div class="meta">
+          <strong>[{{ s.tag }}]</strong> · section: {{ s.section }} · relevance:
+          {{ (s.relevance * 100) | round(0, 'common') | int }}% {% if s.cited
+          %}· <span class="cited">cited in answer</span>{% endif %}
+        </div>
+        {{ s.text }}
+      </div>
+      {% endfor %}
+
+      <p style="color: var(--muted); font-size: 12px">
+        Latency: {% for k, v in result.timings_ms.items() %}{{ k }}={{ v }}ms {%
+        endfor %}
+      </p>
+    </div>
     {% endif %}
-</body>
+  </body>
 </html>

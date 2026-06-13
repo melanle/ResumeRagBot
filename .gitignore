@@ -1,4 +1,11 @@
 .env
 uploads/
 venv/
+.venv/
 .vscode/
+__pycache__/
+*.pyc
+chroma_store/
+logs/
+evaluation/eval_report.json
+faiss_index/
