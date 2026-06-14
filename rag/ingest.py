@@ -27,7 +27,7 @@ def extract_pdf_text(pdf_path: str | Path) -> str:
     parts: list[str] = []
     with fitz.open(pdf_path) as doc:
         for page in doc:
-            parts.append(page.get_text("text"))
+            parts.append(page.get_text("text", sort=True))
     return _normalize_whitespace("\n".join(parts))
 
 
